@@ -1,0 +1,1570 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/svg-with-js.min.css"
+        integrity="sha512-Nef0t+7fHdqSdK0uHHjJtjErpW8dJocz9vz2btqXLK9dVQEB3OdnufZ7lO4dQJJb1BvIhGScbk87vm5Z0OTezw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Alma Web</title>
+</head>
+
+<body>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        .main1 {
+            width: 100%;
+            background-color: black;
+            display: flex;
+            /* position: fixed; */
+            /* flex-direction: row; */
+        }
+
+        .main1_mid {
+            width: 80%;
+
+        }
+
+        .main1_mid img {
+            width: 154px;
+            height: 54px;
+            margin-left: 30px;
+        }
+
+        .buy_now {
+            background-color: #7aa93c;
+            height: 40px;
+            width: 100px;
+            border: none;
+            margin-top: 9px;
+            margin-left: 100px;
+            border-radius: 3px;
+            color: white;
+            font-weight: 600;
+
+        }
+
+        .main2 {
+            background-color: black;
+            display: flex;
+            /* position: sticky; */
+            /* width: 100%; */
+            /* height: 100px; */
+        }
+
+        .main2_mid {
+            width: 40%;
+            z-index: 1;
+        }
+
+        .main2_mid img {
+            margin-left: 30px;
+            margin-top: 10px;
+            width: 120px;
+        }
+
+        .list {
+            display: inline-block;
+            position: relative;
+            padding: 10px;
+            text-align: center;
+            font-size: 20px;
+            /* background-color: #7aa93c; */
+        }
+
+        .menu ul li a {
+            font-family: 'Dosis', 'Arial', 'sans-serif', sans-serif;
+            font-weight: 700 !important;
+            font-size: 12px;
+            color: #ebebeb;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-decoration: none;
+        }
+
+        .menu ul li a:hover {
+            color: #E8AAA0;
+            text-decoration: underline;
+            transform: linear .3s;
+        }
+
+        .search {
+            color: white;
+            margin-top: 20px;
+            margin-left: 90px;
+        }
+
+        .cart {
+            color: white;
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+
+        .lines {
+
+            margin-top: 23px;
+            margin-left: 30px;
+            cursor: pointer;
+        }
+
+        .line1 {
+            background-color: #99918B;
+            width: 12px;
+            height: 2px;
+            margin-left: 10px;
+
+        }
+
+        .line2 {
+            background-color: #99918B;
+            width: 17px;
+            height: 2px;
+            margin-top: 3px;
+            margin-left: 5px;
+
+        }
+
+        .line3 {
+            background-color: #99918B;
+            width: 22px;
+            height: 2px;
+            margin-top: 3px;
+
+        }
+
+        .lines .line1:hover {
+            width: 22px;
+            margin-left: 0px;
+            cursor: pointer;
+        }
+
+        .lines .line2:hover {
+            width: 22px;
+            margin-left: 0px;
+            cursor: pointer;
+        }
+
+        .banner {
+            background-image: linear-gradient(rgba(1, 1, 1, 0.7), rgba(1, 1, 1, 0.7)), url(alma24.jpg);
+            height: 750px;
+        }
+
+        .banner p {
+            font-family: 'Dosis';
+            color: white;
+            font-size: 50px;
+            letter-spacing: 10px;
+            padding-top: 250px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .banner h1 {
+            font-family: 'Dosis';
+            color: #E8AAA0;
+            font-size: 50px;
+            letter-spacing: 10px;
+            padding-top: 20px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .buttns {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .buttns button {
+            background-color: transparent;
+            padding: 10px 20px;
+            margin: 20px;
+            color: white;
+            font-weight: 700;
+            border: 1px solid white;
+        }
+
+        .buttns .aboutbtn:hover {
+            background-color: white;
+            color: #E8AAA0;
+            cursor: pointer;
+            transition: .4s;
+            border: none;
+        }
+
+        .buttns .almabtn:hover {
+            background-color: #E8AAA0;
+            color: white;
+            cursor: pointer;
+            transition: .4s;
+            border: none;
+        }
+
+        .drop {
+            background-color: #242222;
+            position: absolute;
+            width: 20%;
+            margin-left: 30%;
+            color: aliceblue;
+            height: 520px;
+            visibility: hidden;
+        }
+
+        .drop ul li {
+            list-style: none;
+            padding: 10px;
+            border-bottom: 1px solid rgb(121, 116, 116);
+        }
+
+        .drop ul li a {
+            text-decoration: none;
+            color: #99918B;
+            padding: 30px;
+            margin: 20px;
+
+        }
+
+        .drop ul li:hover {
+            background-color: black;
+        }
+
+        .dropactive {
+            visibility: visible;
+        }
+
+        .bg {
+            background-color: red;
+        }
+
+        .sidebar{
+            background-color: black;
+            width: 35%;
+            height: 90%;
+            position: absolute;
+            left: 65%;
+            top: 58px;
+            overflow: scroll;
+            visibility: hidden;
+            overflow-x: hidden;
+        }
+        .sidebaractive{
+            visibility: visible;
+          
+        }
+        .sideimg{
+            margin-left: 70px;
+            margin-top: 70px;
+        }
+        .sidecross{
+            position: absolute;
+            right: 20px;
+            top: 5px;
+            cursor: pointer;
+        }
+        .sidep{
+            color: lightgray;
+            margin-left: 90px;
+            margin-top: 60px;
+            line-height: 30px;
+        }
+        .sidep span a{
+            color: #E8AAA0;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .h4{
+            font-family: 'Dosis', 'Arial', 'sans-serif';
+            color: #ebebeb;
+            font-weight: 700;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 50px;
+            
+        }
+        .socail{
+            color: white;
+           text-align: center;
+           margin-top: 30px;
+        }
+        .socail i {
+            padding: 10px;
+            font-size: 30px;
+        }
+        .socail i:hover{
+            color: #E8AAA0;
+            transition: .5s;
+        }
+        .div3{
+            display: flex;
+            justify-content: space-around;
+            margin-top: 100px;
+            text-align: center;
+            font-family: 'Open Sans', 'Arial', 'sans-serif';
+        }
+        .innov h1{
+            color: #E8AAA0;
+            letter-spacing: 3px;
+            font-size: 40px;
+        }
+        .innov h2{
+            margin-top: 20px;
+            letter-spacing: 5px;
+            font-family: 'Dosis', 'Arial', 'sans-serif', sans-serif;
+        }
+        .innov p{
+            margin-top: 20px;
+            line-height: 30px;
+        }
+        .staff{
+            background-color: #F9EBE8;
+            height: 450px;
+            text-align: center;
+            margin-top: 150px;
+        }
+        .staffh3{
+            font-family: 'Dosis', 'Arial', 'sans-serif';
+            /* padding-top: 60px; */
+            padding-left: 420px;
+            letter-spacing: 7px;
+            font-weight: 600;
+            font-size: 20px;
+            color: #E8AAA0;
+            text-transform: uppercase;
+            position: absolute;
+            
+        }
+        .staffh1{
+            font-family: 'Dosis', 'Arial', 'sans-serif';
+            padding-top: 60px;
+            padding-left: 250px;
+            letter-spacing: 7px;
+            font-weight: 600;
+            font-size: 50px;
+            text-transform: uppercase;
+        }
+        .distrub{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 60px;
+            /* position: absolute; */
+        }
+        .distrubimg img{
+            width: 100%;
+            position: relative;
+            margin-top: -50%;
+        }
+        .disbtn1{
+            background-color: #242222;
+            color: #ebebeb;
+            position: relative;
+            text-align: center;
+            top: -64px;
+            cursor: pointer;
+            padding: 20px;
+            visibility: hidden;
+        }
+        .disbtn2{
+            background-color: #242222;
+            color: #ebebeb;
+            position: relative;
+            text-align: center;
+            top: -64px;
+            cursor: pointer;
+            padding: 20px;
+            visibility: hidden;
+        }
+        .disbtn3{
+            background-color: #242222;
+            color: #ebebeb;
+            position: relative;
+            text-align: center;
+            top: -64px;
+            cursor: pointer;
+            padding: 20px;
+            visibility: hidden;
+        }
+        .distrub2{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 60px;
+        }
+        .distrubimg2 img{
+            width: 100%;
+            position: relative;
+            margin-top: -45%;
+        }
+        .disbtn12{
+            background-color: #242222;
+            color: #ebebeb;
+            position: relative;
+            text-align: center;
+            top: -20px;
+            cursor: pointer;
+            padding: 20px;
+            visibility: hidden;
+        }
+        .disbtn22{
+            background-color: #242222;
+            color: #ebebeb;
+            position: relative;
+            text-align: center;
+            top: -20px;
+            cursor: pointer;
+            padding: 20px;
+            visibility: hidden;
+        }
+        .disbtn32{
+            background-color: #242222;
+            color: #ebebeb;
+            position: relative;
+            text-align: center;
+            top: -20px;
+            cursor: pointer;
+            padding: 20px;
+            visibility: hidden;
+        }
+        .showbutton{
+            visibility: visible;
+            top: -62px;
+            position: relative;
+            /* transition: 2s; */
+        }
+        .services{
+            background-image:linear-gradient(rgba(1, 1, 1, 0.7), rgba(1, 1, 1, 0.7)), url(alma14.jpg);
+            /* color: #ebebeb; */
+            display: flex;
+            margin-top: -15%;
+            height: 900px;
+        }
+        .allheading{
+           color: #ebebeb;
+            width: 50%;
+            position: absolute;
+            margin-top: 20%;
+        }
+        .allheading h3{
+            color: #E8AAA0;
+            margin-left: 15%;
+            letter-spacing: 5px;
+        }
+        .allheading h1{
+            margin-top: 5%;
+            margin-left: 15%;
+            letter-spacing: 10px;
+        }
+        .allheading p{
+            margin-top: 10%;
+            margin-left: 15%;
+        }
+        .allheading button{
+            background-color: #E8AAA0;
+            margin-top: 15%;
+            margin-left: 15%;
+            font-size: 15px;
+            padding: 10px 20px;
+            border: none;
+            color: #ebebeb;
+            cursor: pointer;
+        }
+        .allimg{
+            /* background-color: #7aa93c; */
+            width: 50%;
+            position: absolute;
+            left: 50%;
+        }
+        .lcircle{
+            position: absolute;
+            margin-top: 40%;
+            margin-left: 10%;
+            width: 80%;
+            height: 530px;
+            border: 2px solid white;
+            border-radius: 50%;
+
+        }
+        .mcircle{
+            position: absolute;
+            color: black;
+            background-color: #ebebeb;
+            margin-top: 13%;
+            margin-left: 15%;
+            width: 70%;
+            height: 72%;
+            border: 2px solid white;
+            border-radius: 50%;
+           visibility: hidden;
+        }
+        .mcircle i{
+            position: absolute;
+            color: #E8AAA0;
+            margin-top: 10%;
+            margin-left: 34%;
+            font-size: 90px;
+          
+        }
+        .mcircle h4{
+            margin-top: 45%;
+            padding-left: 120px;
+          
+        }
+        .mcircle p{
+            margin-top: 10%;
+            text-align: center;
+           
+        }
+        .circleactive{
+            visibility: visible;
+
+        }
+        .bg{
+            background-color: #E8AAA0;
+        }
+        .scircle1{
+            border: 2px solid white;
+            position: absolute;
+            margin-left: 40%;
+            margin-top: -35px;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            font-size: 40px;
+            background-color: #ebebeb;
+            
+        }
+        .icon1{
+            position: absolute;
+            margin-top: 17px;
+            margin-left: 15px;
+        }
+        .scircle2{
+            border: 2px solid white;
+            position: relative;
+            margin-left: 85%;
+            margin-top: 15%;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            font-size: 40px;
+            background-color: #ebebeb;
+        }
+        .icon2{
+            position: absolute;
+            margin-top: 17px;
+            margin-left: 11px;
+        }
+        .scircle3{
+            border: 2px solid white;
+            background-color: #ebebeb;
+            margin-top: -50px;
+            margin-left: -15px;
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            font-size: 40px;
+        }
+        .icon3{
+            position: absolute;
+            margin-top: 17px;
+            margin-left: 10px;
+        }
+        .scircle4{
+            border: 2px solid white;
+            background-color: #ebebeb;
+            position: absolute;
+            margin-left: 90%;
+            margin-top: 30%;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            font-size: 40px;
+        }
+        .icon4{
+            position: absolute;
+            margin-top: 15px;
+            margin-left: 23px;
+        }
+        .scircle5{
+            border: 2px solid white;
+            background-color: #ebebeb;
+            position: absolute;
+            margin-top: 190px;
+            margin-left: -10px;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            font-size: 40px;
+        }
+        .icon5{
+            position: absolute;
+            margin-top: 17px;
+            margin-left: 15px;
+        }
+        .scircle6{
+            border: 2px solid white;
+            background-color: #ebebeb;
+            position: absolute;
+            display: flex;
+            margin-left: 45%;
+            margin-top: 62%;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            font-size: 40px;
+        }
+        .icon6{
+            position: absolute;
+            margin-top: 17px;
+            margin-left: 15px;
+        }
+        .clients{
+            background: url("alma15.jpg");
+            background-repeat: no-repeat;
+            height: 750px;
+            width: 100%;
+           /* position: absolute; */
+            text-align: center;
+        }
+        .sub{
+            padding-top: 200px;
+            color: #E8AAA0;
+            font-size: 15px;
+            letter-spacing: normal;
+        }
+        .head{
+            margin-top: 2%;
+            letter-spacing: 8px;
+        }
+        .clients img{
+            margin-top: 5%;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .info{
+            margin-top: 50px;
+            /* color: #646260; */
+            position: absolute;
+            font-size: 1.4em;
+            line-height: 1.7em;
+            left: 27%;
+            visibility: hidden;
+        }
+        .info p{
+           height: 115px;
+           color: #99918B;
+        }
+        .info span{
+            font-size: 20px;
+            position: absolute;
+            top: 120px;
+            left: 42%;
+        }
+        .info a{
+            /* background-color: aqua; */
+            position: absolute;
+            top: 130%;
+            left: 46%;
+            text-decoration: none;
+            font-size: 13px;
+            color: #E8AAA0;
+        }
+        .info a:hover{
+            font-size: 20px;
+            color: black;
+            position: absolute;
+            left: 47%;
+            font-family: Dosis, Arial;
+
+        }
+        .infoactive{
+           visibility: visible;
+           position: absolute;
+        }
+        .number{
+            /* background-color: red; */
+            display: flex;
+            padding: 40px;
+            cursor: pointer;
+            /* justify-content: space-around; */
+            /* margin-top: 100px; */
+            /* text-align: center; */
+            font-family: 'Open Sans', 'Arial', 'sans-serif';
+        }
+        .num01{
+            width: 25%;
+        }
+        .num01 .line{
+            background-color: #E8AAA0;
+            width: 90%;
+            height: 1px;
+            margin-left: 10px;
+        }
+        .num01 h1{
+            font-size: 20px;
+            color: #E8AAA0;
+            padding-bottom: 10px;
+            padding-left: 10px;
+
+        }
+        .flask{
+            display: flex;
+            flex-direction: row;
+            color: #E8AAA0;
+            padding-top: 10px;
+            font-size: 30px;
+            padding-left: 7px;
+        }
+        .flask h3{
+            padding-left: 30px;
+            font-size: 17px;
+            padding-top: 10px;
+        }
+        /* .flask h3:active{
+            color: #242222;
+            transition: .4s;
+        } */
+        .num02{
+            width: 25%;
+        }
+        .num02 .line{
+            background-color: #E8AAA0;
+            width: 90%;
+            height: 1px;
+            margin-left: 10px;
+        }
+        .num02 h1{
+            font-size: 20px;
+            color: #E8AAA0;
+            padding-bottom: 10px;
+            padding-left: 10px;
+
+        }
+        .flask{
+            display: flex;
+            flex-direction: row;
+            color: #E8AAA0;
+            padding-top: 10px;
+            font-size: 30px;
+            padding-left: 7px;
+        }
+        .flask h3{
+            padding-left: 30px;
+            font-size: 17px;
+            padding-top: 10px;
+        }
+        .num03{
+            width: 25%;
+        }
+        .num03 .line{
+            background-color: #E8AAA0;
+            width: 90%;
+            height: 1px;
+            margin-left: 10px;
+        }
+        .num03 h1{
+            font-size: 20px;
+            color: #E8AAA0;
+            padding-bottom: 10px;
+            padding-left: 10px;
+
+        }
+        .flask{
+            display: flex;
+            flex-direction: row;
+            color: #E8AAA0;
+            padding-top: 10px;
+            font-size: 30px;
+            padding-left: 7px;
+        }
+        .flask h3{
+            padding-left: 30px;
+            font-size: 17px;
+            padding-top: 10px;
+        }
+        .num04{
+            width: 25%;
+        }
+        .num04 .line{
+            background-color: #E8AAA0;
+            width: 90%;
+            height: 1px;
+            margin-left: 10px;
+        }
+        .num04 h1{
+            font-size: 20px;
+            color: #E8AAA0;
+            padding-bottom: 10px;
+            padding-left: 10px;
+
+        }
+        .flask{
+            display: flex;
+            flex-direction: row;
+            color: #E8AAA0;
+            padding-top: 10px;
+            font-size: 30px;
+            padding-left: 7px;
+        }
+        .flask h3{
+            padding-left: 30px;
+            font-size: 17px;
+            padding-top: 10px;
+        }
+        /* .details01{
+            display: flex;
+          
+        }
+        .details02{
+            margin-left: 0%;
+            opacity: 0;
+           
+        }
+        .details03{
+            margin-left: 0%;
+            opacity: 0;
+          
+        }
+        .details04{
+            margin-left: 0%;
+            opacity: 0;
+          
+        } */
+        .headings{
+            /* background-color: aqua; */
+            /* width: 43%; */
+            margin-left: 7%;
+            margin-top: 10%;
+            position: absolute;
+        }
+        .headings h1{
+            letter-spacing: 20px;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        .headings p{
+            margin-top: 6%;
+            line-height: 25px;
+        }
+        .headings button{
+            margin-top: 10%;
+            border: none;
+            background-color: #e8aaa0;
+            padding: 12px 18px;
+            color: #ebebeb;
+            cursor: pointer;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+        }
+        .images{
+            position: absolute;
+            left: 50%;
+            margin-top: 10%;
+        }
+        .icontext01{
+            display: flex;
+            /* background-color: #7aa93c; */
+            margin-top: 40px;
+        }
+        .icontext01 i{
+            font-size: 50px;
+            color: #e8aaa0;
+            margin-top: 13px;
+            margin-left: 10px;
+            position: absolute;
+        }
+        .icontext01 h4{
+            margin-left: 100px;
+            position: absolute;
+            margin-top: 10px;
+
+        }
+        .icontext01 p{
+            margin-left: 100px;
+            margin-top: 50px;
+        }
+        .icontext02{
+            display: flex;
+            /* background-color: #7aa93c; */
+            margin-top: 40px;
+        }
+        .icontext02 i{
+            font-size: 50px;
+            color: #e8aaa0;
+            margin-top: 13px;
+            margin-left: 10px;
+            position: absolute;
+        }
+        .icontext02 h4{
+            margin-left: 100px;
+            position: absolute;
+            margin-top: 10px;
+
+        }
+        .icontext02 p{
+            margin-left: 100px;
+            margin-top: 50px;
+        }
+        .office h1{
+            margin-top: 60px;
+            margin-left: 80px;
+            letter-spacing: 20px;
+        }
+        .office .p1{
+            margin-top: 20px;
+            margin-left: 70px;
+            width: 87%;
+            padding: 20px;
+            line-height: 30px;
+        }
+        .office p{
+            margin-left: 90px;
+        }
+        .images03{
+            display: flex;
+            position: absolute;
+        }
+        .images03 .img01{
+            width: 30%;
+            margin-top: 25%;
+            margin-left: 6%;
+        }
+        .images03 .img02{
+            width: 30%;
+            margin-top: 25%;
+            margin-left: 5px;
+        }
+        .images03 .img03{
+            width: 30%;
+            margin-top: 25%;
+            margin-left: 5px;
+        }
+        .video{
+            width: 48%;
+            /* background-color: #7aa93c; */
+            margin-left: 7%;
+            margin-top: 10%;
+            line-height: 30px;
+        }
+        .video h1{
+            letter-spacing: 10px;
+        }
+        .video p{
+            margin-top: 30px;
+        }
+        .videoimg video{
+            width: 80%;
+            height: 100%;
+            margin-left: 10%;
+            margin-top: 10%;
+        }
+        .flasksec{
+            visibility: hidden;
+            display: flex;
+            flex-direction: row;
+            overflow: hidden;
+            /* position: absolute; */
+        }
+        .flasksecactive{
+            visibility: visible;
+            position: absolute;
+        }
+        .footer{
+            background-image:linear-gradient(rgba(1, 1, 1, 0.7), rgba(1, 1, 1, 0.7)), url(alma25.jpg);
+            color: #ebebeb;
+            text-align: center;
+            
+        }
+        .inputhead h3{
+            padding-top: 10%;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+        .inputhead p{
+            margin-top: 20px;
+        }
+        .inputhead input{
+            width: 55%;
+            border-radius: 25px !important;
+            padding: 12px 20px;
+            margin-top: 5%;
+        }
+        .inputhead button{
+            background-color: #E8AAA0;
+            color: #ebebeb;
+            border: none;
+            position: absolute;
+            padding: 12px 20px;
+            border-radius: 25px;
+            margin-top: 70px;
+            margin-left: -98px;
+            cursor: pointer;
+        }
+        .sicons{
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 5%;
+            padding: 20px;
+        }
+        .address i{
+            font-size: 26px;
+            margin-bottom: 20px;
+            color: #2b2929;
+            width: auto;
+            height: auto;
+            width: 50px;
+            height: 50px;
+            background: #fa7268 !important;
+            color: #fff !important;
+            border-radius: 100%;
+            line-height: 50px;
+        }
+        .address h4{
+            margin-left: 10px;
+        }
+        .address h6{
+            margin-top: 10px;
+        }
+        
+        .address a{
+            padding-top: 15px;
+            text-decoration: none;
+            color: white;
+            font-size: 12px;
+        }
+        .copy{
+            font-size: 10px;
+            margin-bottom: 20%;
+        }
+        .socails{
+            color: white;
+           text-align: center;
+           margin-top: 30px;
+        }
+        .socails i {
+            padding: 10px;
+            font-size: 20px;
+        }
+        .socails i:hover{
+            color: #E8AAA0;
+            transition: .5s;
+        }
+    </style>
+    <div class="main1">
+        <div class="main1_mid">
+            <img src="alma01.svg" alt="" srcset="">
+        </div>
+        <button class="buy_now">Buy now</button>
+    </div>
+
+    <div class="main2">
+        <div class="main2_mid">
+            <img src="logo-alma-light.png" alt="" srcset="">
+        </div>
+        <div class="menu">
+            <ul>
+                <li class="list"><a href="#home">Home</a></li>
+                <li class="list"><a href="#pages">Pages</a></li>
+                <li class="list"><a href="#portfolios">Portfolios</a></li>
+                <li class="list"><a href="#elements">Elements</a></li>
+                <li class="list"><a href="#blogs">Blogs</a></li>
+                <li class="list"><a href="#hop">Shop</a></li>
+            </ul>
+        </div>
+
+        <div class="search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <div class="cart">
+            <i class="fa-solid fa-basket-shopping"></i>
+        </div>
+        <div class="lines" id="side">
+            <div class="line1 "></div>
+            <div class="line2 "></div>
+            <div class="line3 "></div>
+        </div>
+    </div>
+
+    <div class="drop">
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">Home</a></li>
+            <li><a href="">Home</a></li>
+            <li><a href="">Home</a></li>
+            <li><a href="">Home</a></li>
+            <li><a href="">Home</a></li>
+            <li><a href="">Home</a></li>
+            <li><a href="">Home</a></li>
+            <li><a href="">Home</a></li>
+            <li><a href="">Home</a></li>
+            <li><a href="">Home</a></li>
+            <li><a href="">Home</a></li>
+            <li><a href="">Home</a></li>
+        </ul>
+    </div>
+    <div class="drop">
+        <ul>
+            <li><a href="">pages</a></li>
+            <li><a href="">pages</a></li>
+            <li><a href="">pages</a></li>
+            <li><a href="">pages</a></li>
+            <li><a href="">pages</a></li>
+            <li><a href="">pages</a></li>
+            <li><a href="">pages</a></li>
+            <li><a href="">pages</a></li>
+            <li><a href="">pages</a></li>
+            <li><a href="">pages</a></li>
+            <li><a href="">pages</a></li>
+            <li><a href="">pages</a></li>
+            <li><a href="">pages</a></li>
+        </ul>
+    </div>
+
+
+
+
+    <div class="sidebar">
+        <img class="sideimg" src="alma05.png" alt="" srcset="">
+        <img class="sidecross" src="alma41.png" alt="" srcset="">
+        <p class="sidep">Beautiful theme with minimalist Design.<br> It’s time to amaze your clients with a <br> brand new website.<span><a href=""> Get Alma today!</span></a></p>
+
+        <h4 class="h4">Follow us</h4>
+
+        <div class="socail">        
+        <i class="fa-brands fa-facebook"></i>
+        <i class="fa-brands fa-twitter"></i>
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-pinterest"></i>
+        <i class="fa-brands fa-tiktok"></i>
+        <i class="fa-brands fa-whatsapp"></i>
+    </div>
+
+    </div>
+    </div>
+    <div class="banner">
+        <p>WE'RE DIGITAL PIONEERS</p>
+        <h1>I'N WEB DESIGN</h1>
+        <div class="buttns">
+            <button class="aboutbtn">MORE ABOUT US</button>
+            <button class="almabtn">PERCHASE ALMA</button>
+        </div>
+        </div>
+        <div class="div3">
+            <div class="innov">
+                <h1>01</h1>
+                <h2>INNOVATION</h2>
+                <p>Interactively brand robust collaboration and idea-<br>sharing rather than dynamic e-tailers</p>
+            </div>
+            <div class="innov">
+                <h1>02</h1>
+                <h2>CREATIVITY</h2>
+                <p>Interactively brand robust collaboration and idea-<br>sharing rather than dynamic e-tailers</p>
+            </div>
+            <div class="innov">
+                <h1>03</h1>
+                <h2>QUALITY</h2>
+                <p>Interactively brand robust collaboration and idea-<br>sharing rather than dynamic e-tailers</p>
+            </div>
+        </div>
+
+        <div class="staff">
+            <div class="headings">
+                <h3 class="staffh3">we do amazing stuff</h3>
+                <h1 class="staffh1">GRAPHIC DESIGN</h1>
+            </div>
+        </div>
+            <div class="distrub">
+                <div class="distrubimg">
+                    <img id="disbtns" src="alma08.jpg" alt="" srcset="">
+                    <div class="disbtn1 btns ">ALMA THEME</div>
+                </div>
+                <div class="distrubimg">
+                    <img id="disbtns" src="alma09.jpg" alt="" srcset="">
+                    <div class="disbtn2 btns ">MODERN IWATCH</div>
+                </div>
+                <div class="distrubimg">
+                    <img id="disbtns" src="alma10.jpg" alt="" srcset="">
+                    <div class="disbtn3 btns ">DO NO DISTRUB</div>
+                </div>
+            </div>
+            <div class="distrub2">
+                <div class="distrubimg2">
+                    <img id="disbtns" src="alma11.jpg" alt="" srcset="">
+                    <div class="disbtn12 btns ">APPLE IWATCH</div>
+                </div>
+                <div class="distrubimg2">
+                    <img id="disbtns" src="alma12.jpg" alt="" srcset="">
+                    <div class="disbtn22 btns ">NEW IMAC</div>
+                </div>
+                <div class="distrubimg2">
+                    <img id="disbtns" src="alma13.jpg" alt="" srcset="">
+                    <div class="disbtn32 btns">ALMA BOKKS</div>
+                </div>
+            </div>
+            <div class="services">
+                <div class="allheading">
+                    <h3>WE DO CREATIVE STUFF</h3>
+                    <h1>OUR SERVICES</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <button>More About Us</button>
+                </div>
+                <div class="allimg">
+                       <div class="lcircle">
+                        <div class="mcircle midd circleactive">
+                            <i  class="fa-regular fa-heart icon1"></i>
+                            <h4>GRAPHIC DESIGN</h4>
+                            <p>Lorem ipsum is placeholder text <br> commonly used in for <br> previewing layouts and visual <br> mockups.</p>
+                        </div>
+                        <div class="mcircle midd">
+                            <i class="fa-solid fa-computer icon2"></i>
+                            <h4>WEB DESIGN</h4>
+                            <p>Lorem ipsum is placeholder text <br> commonly used in for <br> previewing layouts and visual <br> mockups.</p>
+                        </div>
+                        <div class="mcircle midd">
+                            <i class="fa-solid fa-bezier-curve icon3"></i>
+                            <h4>ILLUSTRATION</h4>
+                            <p>Lorem ipsum is placeholder text <br> commonly used in for <br> previewing layouts and visual <br> mockups.</p>
+                        </div>
+                        <div class="mcircle midd">
+                            <i class="fa-regular fa-file-code"></i>
+                            <h4>WEB DEVELOPMENT</h4>
+                            <p>Lorem ipsum is placeholder text <br> commonly used in for <br> previewing layouts and visual <br> mockups.</p>
+                        </div>
+                        <div class="mcircle midd">
+                            <i class="fa-solid fa-address-book icon5"></i>
+                            <h4>CONSULTING</h4>
+                            <p>Lorem ipsum is placeholder text <br> commonly used in for <br> previewing layouts and visual <br> mockups.</p>
+                        </div>
+                        <div class="mcircle midd">
+                            <i class="fa-solid fa-radio icon6"></i>
+                            <h4>3D MODELING</h4>
+                            <p>Lorem ipsum is placeholder text <br> commonly used in for <br> previewing layouts and visual <br> mockups.</p>
+                        </div>
+                        <div class="scircle1 circles">
+                            <i  class="fa-regular fa-heart icon1"></i>
+                        </div>
+                        <div class="scircle2 circles">
+                            <i class="fa-solid fa-computer icon2"></i>
+                        </div>
+                        <div class="scircle3 circles">
+                            <i class="fa-solid fa-bezier-curve icon3"></i>
+                        </div>
+                        <div class="scircle4 circles">
+                            <i class="fa-regular fa-file-code icon4"></i>
+                        </div>
+                        <div class="scircle5 circles">
+                            <i class="fa-solid fa-address-book icon5"></i>
+                        </div>
+                        <div class="scircle6 circles">
+                            <i class="fa-solid fa-radio icon6"></i>
+                        </div>
+                       </div>
+                </div>
+            </div>
+            
+            <div class="clients">
+                <h2 class="sub">WE LOVE THEM. THEY LOVE US</h2>
+                <h1 class="head">OUR CLIENTS</h1>
+                <img class="climages" src="alma16.jpg" alt="" srcset="">
+                <img class="climages" src="alma17.jpg" alt="" srcset="">
+                <img class="climages" src="alma18.jpg" alt="" srcset="">
+                <img class="climages" src="alma19.jpg" alt="" srcset="">
+                <img class="climages" src="alma20.jpg" alt="" srcset="">
+                <img class="climages" src="alma21.jpg" alt="" srcset="">
+                
+                <div class="info">
+                    <p>"Rapidiously integrate multimedia based resources whereas low-risk yiel <br> innovate market positioning products without B2B products resources<br> before"</p>
+                <span>Jack Shapeard</span>
+                <a href="https://preview.naapo.net/alma/demo1/#">COMPANY</a>
+                </div>
+
+                <div class="info">
+                <p>"Compellingly fashion low-risk high-yield "outside the box" thinking after<br> synergistic users. Quickly empower web-enabled manufactured products <br> alignments"</p>
+                <span>Maria Madeira</span>
+                <a href="https://preview.naapo.net/alma/demo1/#">AGENCY</a>
+                </div>
+                
+                <div class="info">
+                <p>"Rapidiously integrate multimedia based resources whereas low-risk high- <br>yield technologies. Proactively innovate market positioning products"</p>
+                <span>Lucas Noel</span>
+                <a href="https://preview.naapo.net/alma/demo1/#">NAPPO AGENCY</a>
+                </div>
+                <div class="info">
+                <p>"Energistically engage diverse vortals and prospective methods of <br> empowerment pontificate diverse"</p>
+                <span>Jonas Benfas</span>
+                <a href="https://preview.naapo.net/alma/demo1/#">NAPPO</a>
+                </div>
+                <div class="info">
+                <p>"Enthusiastically syndicate inexpensive services and bandwidth <br> phosfluorescently develop cooperative content vis-a-vis best-of-breed <br> alignments."</p>
+                <span>Lucas Doe</span>
+               <a href="https://preview.naapo.net/alma/demo1/#">MARKETPLACE</a>
+                </div>
+                <div class="info">
+                <p>"Rapidiously integrate multimedia based resources whereas low-risk high- <br> yield technologies. Proactively innovate market positioning products"</p>
+                <span>Carina Lucas</span>
+                <a href="https://preview.naapo.net/alma/demo1/#">NAPPO AGENCY</a>
+                </div>
+            </div>
+            
+            <!-- <div class="number numaccess">
+                <div class="num01">
+                    <h1>01</h1>
+                   <div class="line"></div>
+                   <div class="flask">
+                    <i class="fa-solid fa-flask"></i>
+                    <h3>WHO WE ARE</h3>
+                   </div>
+                </div>
+                <div class="num02 numaccess">
+                    <h1>02</h1>
+                    <div class="line"></div>
+                   <div class="flask">
+                    <i class="fa-solid fa-microscope"></i>
+                    <h3>WHAT WE DO</h3>
+                   </div>
+                </div>
+                <div class="num03 numaccess">
+                    <h1>03</h1>
+                    <div class="line"></div>
+                   <div class="flask">
+                    <i class="fa-solid fa-mountain-sun"></i>
+                    <h3>OFFICE</h3>
+                   </div>
+                </div>
+                <div class="num04 numaccess">
+                    <h1>04</h1>
+                    <div class="line"></div>
+                   <div class="flask">
+                    <i class="fa-solid fa-video"></i>
+                    <h3>VIDEO</h3>
+                   </div>
+                </div>
+            </div>  -->
+
+
+<!-- 
+             <div class="flasksec">
+            <div class="details01">
+                <div class="headings">
+                    <h1>WE'RE ALMA</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <button>MORE ABOUT US</button>
+                </div>
+                <div class="images">
+                    <img src="alma23.jpg" alt="" srcset="">
+                </div>
+            </div> 
+
+
+
+
+             <div class="details02">
+                <div class="headings">
+                    <h1>DESIGN & CODE</h1>
+                    <div class="icontext01">
+                        <i class="fa-solid fa-computer"></i>
+                        <h4>GRAPHIC & WEB DESIGN</h4>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit <br>
+                            esse cillum dolore
+                            </p>
+                    </div>
+                    <div class="icontext02">
+                        <i class="fa-solid fa-shield"></i>
+                        <h4>WEB DEVELOPMENT</h4>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit <br>
+                            esse cillum dolore
+                            </p>
+                    </div>
+                    <button>MORE ABOUT US</button>
+                </div>
+                <div class="images">
+                    <img src="alma23.jpg" alt="" srcset="">
+                </div>
+            </div>  
+
+
+
+
+            <div class="details03">
+                <div class="office">
+                    <h1>THE OFFICE</h1>
+                    <p class="p1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    
+                </div>
+                <div class="images03 details">
+                    <img class="img01" src="alma24.jpg" alt="" srcset="">
+                    <img class="img02" src="alma25.jpg" alt="" srcset="">
+                    <img class="img03" src="alma26.jpg" alt="" srcset="">
+                 </div> 
+            </div>
+            
+
+
+
+
+             <div class="details04">
+                <div class="video">
+                    <h1>VIDEO / MOTION</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                   
+                </div>
+                <div class="videoimg">
+                    <video src="Kuaser.mp4" controls></video>
+                </div>
+            </div>
+        </div>  -->
+
+
+
+        <div class="footer">
+            <div class="inputhead">
+                <h3>Subscribe our Newsletter</h3>
+                <p>Receive news, cool free stuff updates and new released products (no spam!)</p>
+                <input type="email" placeholder="Enter youe eail here">
+                <button>Subscribe</button>
+            </div>
+            <div class="sicons">
+                <div class="address">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <h4>ADDRESS</h4>
+                    <h6>PO Box 16122 Collins Street West<br>
+                        Victoria 8007 Australia</h6>
+                </div>
+                <div class="address">
+                    <i class="fa-regular fa-envelope"></i>
+                    <h4>EMAIl</h4>
+                    <a href="mailto:marketing@example.com">marketing@example.com</a>
+                    <br>
+                    <a href="mailto:geral@example.com">geral@example.com</a>
+                </div>
+                <div class="address">
+                    <i class="fa-solid fa-phone"></i>
+                    <h4>PHONE</h4>
+                    <h6>( +92 ) 3026668822<br>
+                    ( +92 ) 3026668822</h6>
+                </div>
+            </div>
+            <img src="logo-alma-light.png" alt="" srcset="">
+            <div class="socails">        
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-twitter"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-pinterest"></i>
+                <i class="fa-brands fa-tiktok"></i>
+                <i class="fa-brands fa-whatsapp"></i>
+            </div>
+            <span class="copy">Afzal © 2024 by Naapo</span>
+        </div>
+
+        <script>
+            let list = document.querySelectorAll(".list");
+            let drops = document.querySelectorAll(".drop"); 
+
+            for (let i = 0; i < list.length; i++) {
+                list[i].addEventListener("mouseenter", function () {
+                    for (let j = 0; j < drops.length; j++) {
+                        drops[j].classList.remove("dropactive"); 
+                    }
+                    drops[i].classList.add("dropactive"); 
+                    // console.log("working");
+                });
+            }
+            
+
+            let sidebar =document.querySelector("#side");
+            let cross = document.querySelector(".sidecross")
+            let side = document.querySelector(".sidebar")
+
+
+        
+            sidebar.addEventListener("click", function(){
+                // console.log("working")
+                side.classList.add("sidebaractive")
+            })
+            cross.addEventListener("click", function(){
+                // console.log("working")
+                side.classList.remove("sidebaractive")
+            })
+
+
+
+            let image = document.querySelectorAll("#disbtns");
+            let btns = document.querySelectorAll(".btns")
+           
+            for (let i = 0; i < image.length; i++) {
+                image[i].addEventListener("mouseenter", function () {
+                    for (let j = 0; j < btns.length; j++) {
+                        btns[j].classList.remove("showbutton"); 
+                        console.log("working....")
+                    }
+                    btns[i].classList.add("showbutton"); 
+                   
+                });
+            }
+
+
+            let sircle = document.querySelectorAll(".circles");
+            let showcircel = document.querySelectorAll(".midd");
+
+           
+            for (let i = 0; i < sircle.length; i++) {
+                sircle[i].addEventListener("click", function () {
+                    for (let j = 0; j < showcircel.length; j++) {
+                        showcircel[j].classList.remove("circleactive"); 
+                    }
+                    showcircel[i].classList.add("circleactive"); 
+                   
+                });
+            }
+
+
+            let users = document.querySelectorAll(".climages"); 
+            let information = document.querySelectorAll(".info"); 
+
+            for (let i = 0; i < users.length; i++) {
+                users[i].addEventListener("mouseenter", function () {
+                    console.log(users)
+                    console.log(information)
+                    for (let j = 0; j < information.length; j++) {
+                        information[j].classList.remove("infoactive"); 
+                    }
+                    information[i].classList.add("infoactive"); 
+                   
+                });
+            }
+
+
+            let numbers = document.querySelectorAll(".numaccess");
+            let detailssec = document.querySelectorAll(".flasksec");
+
+            for (let i = 0; i < numbers.length; i++) {
+                numbers[i].addEventListener("click", function () {
+                    // console.log(users)
+                    // console.log(information)
+                    for (let j = 0; j < detailssec.length; j++) {
+                        detailssec[j].classList.remove("flasksecactive"); 
+                    }
+                    detailssec[i].classList.add("flasksecactive"); 
+                   
+                });
+            }
+
+
+        </script>
+      
+</body>
+
+</html>
